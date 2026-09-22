@@ -2,7 +2,7 @@ package ics
 
 const ics = `BEGIN:VCALENDAR
 PRODID:{{.ProdId}}
-METHOD:REQUEST
+METHOD:{{.Method}}
 VERSION:2.0
 {{range $ve := .Events}}{{$ve}}
 {{end}}END:VCALENDAR`
@@ -21,6 +21,7 @@ SUMMARY:{{.Summary}}
 DESCRIPTION:{{.Description}}
 CLASS:{{.Class}}
 UID:{{.UID}}
+SEQUENCE:{{.Sequence}}
 STATUS:{{.Status}}
 END:VEVENT`
 

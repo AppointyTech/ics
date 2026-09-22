@@ -10,8 +10,13 @@ import (
 )
 
 func Generate(prodId string, events ...*Event) (string, error) {
+	method := Method_REQUEST
+	if len(events) > 0 && events[0].Method != "" {
+		method = events[0].Method
+	}
 	obj := &generator{
 		ProdId: prodId,
+		Method: method,
 		Events: []string{},
 	}
 
@@ -112,6 +117,7 @@ func (event *Event) Generate(prodId string) (string, error) {
 
 type generator struct {
 	ProdId string
+	Method Method
 	Events []string
 }
 
