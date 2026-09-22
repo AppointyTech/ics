@@ -5,6 +5,8 @@ import (
 )
 
 type Event struct {
+	Method       Method
+	Sequence     int32
 	Class        CLASS
 	Summary      string
 	Description  string
@@ -23,6 +25,14 @@ type Event struct {
 
 	dtStamp string
 }
+
+type Method string
+
+const (
+	Method_REQUEST Method = "REQUEST"
+	Method_PUBLISH Method = "PUBLISH"
+	Method_CANCEL  Method = "CANCEL"
+)
 
 type EventStatus string
 
