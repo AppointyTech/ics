@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/hex"
 	"strconv"
-	"strings"
 	"text/template"
 	"time"
 )
@@ -33,12 +32,13 @@ func Generate(prodId string, events ...*Event) (string, error) {
 		}
 
 		e := &vEvent{
-			Event:       event,
-			DtStamp:     FormatDateTime(time.Now()),
-			DtEnd:       FormatDateTime(event.DtEnd),
-			DtStart:     FormatDateTime(event.DtStart),
-			ExDate:      make([]string, len(event.ExDate)),
-			Description: strings.Join(strings.Split(event.Description, "\n"), `\n`),
+			Event:          event,
+			DtStamp:        FormatDateTime(time.Now()),
+			DtEnd:          FormatDateTime(event.DtEnd),
+			DtStart:        FormatDateTime(event.DtStart),
+			ExDate:         make([]string, len(event.ExDate)),
+			Description:    escapeNewlines(event.Description),
+			AltDescription: htmlAltDescription(event.Description),
 		}
 		for i, exd := range event.ExDate {
 			e.ExDate[i] = FormatDateTime(exd)
@@ -67,8 +67,13 @@ func Generate(prodId string, events ...*Event) (string, error) {
 }
 
 func (event *Event) Generate(prodId string) (string, error) {
+	method := Method_REQUEST
+	if event.Method != "" {
+		method = event.Method
+	}
 	obj := &generator{
 		ProdId: prodId,
+		Method: method,
 		Events: []string{},
 	}
 
@@ -79,12 +84,13 @@ func (event *Event) Generate(prodId string) (string, error) {
 	}
 
 	e := &vEvent{
-		Event:       event,
-		DtStamp:     FormatDateTime(time.Now()),
-		DtEnd:       FormatDateTime(event.DtEnd),
-		DtStart:     FormatDateTime(event.DtStart),
-		ExDate:      make([]string, len(event.ExDate)),
-		Description: strings.Join(strings.Split(event.Description, "\n"), `\n`),
+		Event:          event,
+		DtStamp:        FormatDateTime(time.Now()),
+		DtEnd:          FormatDateTime(event.DtEnd),
+		DtStart:        FormatDateTime(event.DtStart),
+		ExDate:         make([]string, len(event.ExDate)),
+		Description:    escapeNewlines(event.Description),
+		AltDescription: htmlAltDescription(event.Description),
 	}
 	for i, exd := range event.ExDate {
 		e.ExDate[i] = FormatDateTime(exd)
