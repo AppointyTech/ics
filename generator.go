@@ -37,7 +37,7 @@ func Generate(prodId string, events ...*Event) (string, error) {
 			DtEnd:          FormatDateTime(event.DtEnd),
 			DtStart:        FormatDateTime(event.DtStart),
 			ExDate:         make([]string, len(event.ExDate)),
-			Description:    escapeNewlines(event.Description),
+			Description:    escapeText(event.Description),
 			AltDescription: htmlAltDescription(event.Description),
 		}
 		for i, exd := range event.ExDate {
@@ -89,7 +89,7 @@ func (event *Event) Generate(prodId string) (string, error) {
 		DtEnd:          FormatDateTime(event.DtEnd),
 		DtStart:        FormatDateTime(event.DtStart),
 		ExDate:         make([]string, len(event.ExDate)),
-		Description:    escapeNewlines(event.Description),
+		Description:    escapeText(event.Description),
 		AltDescription: htmlAltDescription(event.Description),
 	}
 	for i, exd := range event.ExDate {
