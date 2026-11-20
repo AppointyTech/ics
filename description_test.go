@@ -91,7 +91,7 @@ func TestGenerateWithHTMLDescription(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Generate() error = %v", err)
 	}
-	if !strings.Contains(gotIcs, want) {
+	if !strings.Contains(unfold(gotIcs), want) {
 		t.Errorf("Generate() = %v, want it to contain %v", gotIcs, want)
 	}
 
@@ -99,7 +99,7 @@ func TestGenerateWithHTMLDescription(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Event.Generate() error = %v", err)
 	}
-	if !strings.Contains(gotIcs, want) {
+	if !strings.Contains(unfold(gotIcs), want) {
 		t.Errorf("Event.Generate() = %v, want it to contain %v", gotIcs, want)
 	}
 }
@@ -118,7 +118,7 @@ func TestGeneratePlainTextWithAngleBracketsHasNoAltDescription(t *testing.T) {
 	if strings.Contains(gotIcs, "X-ALT-DESC") {
 		t.Errorf("Generate() added X-ALT-DESC for plain text: %v", gotIcs)
 	}
-	if !strings.Contains(gotIcs, "\nDESCRIPTION:Contact John <john@acme.com>\\, thanks\n") {
+	if !strings.Contains(unfold(gotIcs), "\nDESCRIPTION:Contact John <john@acme.com>\\, thanks\n") {
 		t.Errorf("Generate() DESCRIPTION not escaped as expected: %v", gotIcs)
 	}
 }

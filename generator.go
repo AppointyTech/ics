@@ -63,7 +63,7 @@ func Generate(prodId string, events ...*Event) (string, error) {
 		return "", err
 	}
 
-	return buf.String(), nil
+	return toContentLines(buf.String()), nil
 }
 
 func (event *Event) Generate(prodId string) (string, error) {
@@ -118,7 +118,7 @@ func (event *Event) Generate(prodId string) (string, error) {
 		return "", err
 	}
 
-	return buf.String(), nil
+	return toContentLines(buf.String()), nil
 }
 
 type generator struct {

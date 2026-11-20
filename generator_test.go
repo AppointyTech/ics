@@ -79,7 +79,7 @@ STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR`
 
-	if gotIcs != expectedIcs {
+	if gotIcs := unfold(gotIcs); gotIcs != expectedIcs {
 		t.Errorf("Generate() = %v, want %v", gotIcs, expectedIcs)
 	}
 
@@ -143,7 +143,7 @@ STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR`
 
-	if gotIcs != expectedIcs {
+	if gotIcs := unfold(gotIcs); gotIcs != expectedIcs {
 		t.Errorf("Generate() = %v, want %v", gotIcs, expectedIcs)
 	}
 
@@ -213,7 +213,7 @@ STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR`
 
-	if gotIcs != expectedIcs {
+	if gotIcs := unfold(gotIcs); gotIcs != expectedIcs {
 		t.Errorf("Generate() = %v, want %v", gotIcs, expectedIcs)
 	}
 
@@ -269,7 +269,7 @@ STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR`
 
-	if gotIcs != expectedIcs {
+	if gotIcs := unfold(gotIcs); gotIcs != expectedIcs {
 		t.Errorf("Generate() = %v, want %v", gotIcs, expectedIcs)
 	}
 }
@@ -325,7 +325,7 @@ STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR`
 
-	if gotIcs != expectedIcs {
+	if gotIcs := unfold(gotIcs); gotIcs != expectedIcs {
 		t.Errorf("Generate() = %v, want %v", gotIcs, expectedIcs)
 	}
 
