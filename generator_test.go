@@ -74,11 +74,12 @@ SUMMARY:Event Name
 DESCRIPTION:Event Description
 CLASS:PUBLIC
 UID:313233313233313233
+SEQUENCE:0
 STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR`
 
-	if gotIcs != expectedIcs {
+	if gotIcs := unfold(gotIcs); gotIcs != expectedIcs {
 		t.Errorf("Generate() = %v, want %v", gotIcs, expectedIcs)
 	}
 
@@ -137,11 +138,12 @@ SUMMARY:Event Name
 DESCRIPTION:Event Description
 CLASS:PUBLIC
 UID:313233313233313233
+SEQUENCE:0
 STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR`
 
-	if gotIcs != expectedIcs {
+	if gotIcs := unfold(gotIcs); gotIcs != expectedIcs {
 		t.Errorf("Generate() = %v, want %v", gotIcs, expectedIcs)
 	}
 
@@ -206,11 +208,12 @@ SUMMARY:Event Name
 DESCRIPTION:Event Description
 CLASS:PUBLIC
 UID:313233313233313233
+SEQUENCE:0
 STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR`
 
-	if gotIcs != expectedIcs {
+	if gotIcs := unfold(gotIcs); gotIcs != expectedIcs {
 		t.Errorf("Generate() = %v, want %v", gotIcs, expectedIcs)
 	}
 
@@ -261,11 +264,12 @@ SUMMARY:Event Name
 DESCRIPTION:Event Description
 CLASS:PUBLIC
 UID:313233313233313233
+SEQUENCE:0
 STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR`
 
-	if gotIcs != expectedIcs {
+	if gotIcs := unfold(gotIcs); gotIcs != expectedIcs {
 		t.Errorf("Generate() = %v, want %v", gotIcs, expectedIcs)
 	}
 }
@@ -316,11 +320,12 @@ SUMMARY:Event Name
 DESCRIPTION:Event Description
 CLASS:PUBLIC
 UID:313233313233313233
+SEQUENCE:0
 STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR`
 
-	if gotIcs != expectedIcs {
+	if gotIcs := unfold(gotIcs); gotIcs != expectedIcs {
 		t.Errorf("Generate() = %v, want %v", gotIcs, expectedIcs)
 	}
 
