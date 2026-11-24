@@ -18,7 +18,8 @@ RRULE:{{$ru}}{{end}}{{range $ru := .ExRule}}
 EXRULE:{{$ru}}{{end}}{{range $ru := .ExDate}}
 EXDATE:{{$ru}}{{end}}
 SUMMARY:{{.Summary}}
-DESCRIPTION:{{.Description}}
+DESCRIPTION:{{.Description}}{{if .AltDescription}}
+X-ALT-DESC;FMTTYPE=text/html:{{.AltDescription}}{{end}}
 CLASS:{{.Class}}
 UID:{{.UID}}
 SEQUENCE:{{.Sequence}}
@@ -27,9 +28,10 @@ END:VEVENT`
 
 type vEvent struct {
 	*Event
-	DtStamp     string
-	DtEnd       string
-	DtStart     string
-	ExDate      []string
-	Description string
+	DtStamp        string
+	DtEnd          string
+	DtStart        string
+	ExDate         []string
+	Description    string
+	AltDescription string
 }
